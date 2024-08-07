@@ -10,8 +10,6 @@
   --bg-color-1: #d5c4e4;
   --bg-color-2: #c3a5db;
   --bg-color-3: #a4adf9;
-
-  --transition-duration: 2; /* Default transition duration */
 }
 
 html[theme='pastel'] {
@@ -48,9 +46,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-  transition:
-    color var(--transition-duration),
-    background var(--transition-duration); /* Apply transition */
+  transition: color var(--transition-duration);
 }
 
 @layer utilities {
@@ -70,5 +66,4 @@ body {
     var(--bg-color-2) 75%,
     var(--bg-color-1) 100%
   );
-  transition: background var(--transition-duration) ease-in-out; /* Apply transition */
 }
