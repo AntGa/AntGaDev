@@ -11,14 +11,21 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex h-screen items-center bg-[#2D2D2D]">
+    <div className="flex flex-col gap-6 overflow-hidden">
+      <div className="flex h-screen flex-col items-center justify-center bg-[#202123]">
         <p
           data-scroll
-          data-scroll-speed="0.2"
-          className="font-semi ml-[140px] text-9xl text-[#FFFCED]"
+          data-scroll-speed="0.15"
+          className="font-semi ml-[140px] w-full text-9xl text-white"
         >
           ANTON GARAY
+        </p>
+        <p
+          className="ml-[850px] w-full text-3xl text-white"
+          data-scroll
+          data-scroll-speed="0.14"
+        >
+          Game Maker & Full Stack Developer
         </p>
       </div>
       <div className="h-screen bg-[#2D2D2D]"></div>
