@@ -1,58 +1,36 @@
 'use client'
 
-import { motion, useSpring } from 'framer-motion'
-import { useGesture } from '@use-gesture/react'
-import { useState, useEffect } from 'react'
-import Background from './components/meshblobs/background'
-import { Navbar } from './components/Navbar/Navbar'
-
-interface TargetPosition {
-  x: number
-}
-
+import { useEffect } from 'react'
+export const runtime = 'edge'
 export default function Home() {
-  const [target, setTarget] = useState<TargetPosition>({ x: 0 })
-  const x = useSpring(0)
-
   useEffect(() => {
-    x.set(target.x)
-  }, [target, x])
-
-  const bind = useGesture({
-    onMove: ({ xy: [px], dragging }) => {
-      if (!dragging) {
-        const rect = document.body.getBoundingClientRect()
-        const newX = (px - rect.width / 2) / (rect.width / 2)
-        setTarget({ x: newX * 30 })
-      }
-    },
-  })
+    ;(async () => {
+      const LocomotiveScroll = (await import('locomotive-scroll')).default
+      const locomotiveScroll = new LocomotiveScroll()
+    })()
+  }, [])
 
   return (
-    <div
-      className="flex h-screen w-screen flex-col items-center justify-center bg-[#F5E6D7]"
-      {...bind()}
-    >
-      <motion.div
-        initial={{
-          width: '0',
-          height: '0',
-          rotate: -15,
-          borderRadius: 50,
-        }}
-        animate={{
-          width: '105%',
-          height: '100vh',
-          rotate: 0,
-          borderRadius: 0,
-        }}
-        transition={{ ease: [0.83, 0, 0.17, 1], duration: 1.5, delay: 0.5 }}
-        className="background absolute flex justify-center"
-        style={{ x }}
-      >
-        <Navbar />
-      </motion.div>
-      <div className="h-screen w-screen bg-black"></div>
+    <div className="flex flex-col gap-6 overflow-hidden">
+      <div className="flex h-screen flex-col items-center justify-center bg-[#202123]">
+        <p
+          data-scroll
+          data-scroll-speed="0.15"
+          className="font-semi ml-[140px] w-full text-9xl text-white"
+        >
+          ANTON GARAY
+        </p>
+        <p
+          className="ml-[850px] w-full text-3xl text-white"
+          data-scroll
+          data-scroll-speed="0.14"
+        >
+          Game Maker & Full Stack Developer
+        </p>
+      </div>
+      <div className="h-screen bg-[#2D2D2D]"></div>
+      <div className="h-screen bg-[#2D2D2D]"></div>
+      <div className="h-screen bg-[#2D2D2D]"></div>
     </div>
   )
 }
